@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Wall — Dear Someone</title>
+  <meta name="description" content="Leave your story on the wall. Read someone else's, and write back by hand.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Homemade+Apple&family=Jost:wght@400;500&family=Caveat:wght@400;600&family=Kalam&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
+  <script src="js/wall.js" defer></script>
+</head>
+<body>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap split wide-l">
+      <div>
+        <span class="eyebrow">The Wall · Share your story</span>
+        <h1>Leave your story <em>on the wall</em>.</h1>
+        <p class="lead">Testimonies, lessons, small miracles and hard seasons, written by hand and pinned up for whoever needs them next.</p>
+        <div class="actions"><button class="btn" type="button" data-desk>Pin your story</button></div>
+      </div>
+      <div class="pin-howto reveal hand" data-pen="1">
+        <span class="tape" aria-hidden="true"></span>
+        <ol>
+          <li>pick a note, read it</li>
+          <li>write back on it</li>
+          <li>pin your own</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem" aria-labelledby="wall-title">
+    <div class="wrap">
+      <h2 class="skip" id="wall-title">The wall</h2>
+      <p class="wall-status" id="wall-status" role="status"></p>
+      <div class="corkboard">
+        <ul class="pinboard" id="pinboard">
+          <li class="pin welcome" style="--r:-1.5deg">
+            <span class="tack c2" aria-hidden="true"></span>
+            <div class="pin-note welcome paper" data-paper="card" data-pen="0">
+              <span class="script">Dear someone,</span>
+              <span class="w-body">this wall is yours. Pin what you lived through, what carried you, or what you're still carrying. Someone out there needs to read it.</span>
+              <span class="script" style="text-align:right">— M.</span>
+            </div>
+          </li>
+          <li class="pin blank" style="--r:1.2deg">
+            <button class="pin-blank" type="button" data-desk><b aria-hidden="true">+</b>Pin yours here</button>
+          </li>
+        </ul>
+        <p class="wall-more" id="more-wrap" hidden><button class="btn gold" type="button" id="more">Show more of the wall</button></p>
+      </div>
+    </div>
+  </section>
+
+  <div data-signup data-list="wall"></div>
+</main>
+
+<!-- Reading a note -->
+<dialog class="wall-dialog" id="reader" aria-labelledby="reader-title">
+  <button class="dlg-close" type="button" aria-label="Close" data-close>×</button>
+  <div class="corkboard">
+    <h2 class="skip" id="reader-title">A story from the wall</h2>
+    <div class="sheet-wrap">
+      <span class="tack" aria-hidden="true"></span>
+      <article class="sheet paper" id="reader-sheet">
+        <p class="w-to" id="reader-to"></p>
+        <div class="w-body" id="reader-body"></div>
+        <p class="w-sign" id="reader-sign"></p>
+        <p class="w-foot" id="reader-foot"></p>
+      </article>
+    </div>
+    <h3 class="board-label" id="slips-title">Notes back</h3>
+    <ul class="slips" id="slips" aria-labelledby="slips-title"></ul>
+    <form class="slip-form wall-form" id="reply-form" data-pen="0">
+      <label for="r-body">Write back</label>
+      <textarea id="r-body" name="body" data-grow required maxlength="600" placeholder="Leave a kind word…"></textarea>
+      <div class="slip-row">
+        <label for="r-name">Sign it <span class="opt">(optional)</span></label>
+        <input class="hand-input" id="r-name" name="name" maxlength="40" placeholder="Someone" autocomplete="given-name">
+        <button class="btn" type="submit">Tape it on</button>
+      </div>
+      <p class="wall-status" id="reply-status" role="status" style="margin:.8rem 0 0"></p>
+    </form>
+  </div>
+</dialog>
+
+<!-- Writing a note -->
+<dialog class="wall-dialog" id="desk" aria-labelledby="desk-title">
+  <button class="dlg-close" type="button" aria-label="Close" data-close>×</button>
+  <form class="desk wall-form" id="desk-form">
+    <span class="eyebrow">Your turn</span>
+    <h2 id="desk-title">Pin your story, <em>dear someone</em>.</h2>
+    <fieldset class="paper-pick">
+      <legend>Choose your paper</legend>
+      <label><input type="radio" name="paper" value="notebook" checked><span class="sw notebook"></span>Notebook</label>
+      <label><input type="radio" name="paper" value="card"><span class="sw card"></span>Index card</label>
+      <label><input type="radio" name="paper" value="sticky"><span class="sw sticky"></span>Sticky note</label>
+      <label><input type="radio" name="paper" value="kraft"><span class="sw kraft"></span>Kraft paper</label>
+    </fieldset>
+    <div class="sheet-wrap">
+      <div class="desk-sheet paper" id="desk-sheet" data-paper="notebook" data-pen="0">
+        <label class="skip" for="d-body">Your story</label>
+        <textarea id="d-body" name="body" data-grow required maxlength="2000" placeholder="Start wherever it starts…"></textarea>
+        <div class="sign-row">
+          <label for="d-name">Signed,</label>
+          <input class="hand-input" id="d-name" name="name" maxlength="40" placeholder="Someone" autocomplete="given-name">
+        </div>
+      </div>
+    </div>
+    <p class="field-hint" style="margin-top:1rem">Leave it unsigned and it will be signed "Someone".</p>
+    <label class="check"><input type="checkbox" name="mine" required> This is my own story to share, and I've left out other people's full names.</label>
+    <p style="margin-top:1.4rem"><button class="btn" type="submit">Pin it to the wall</button></p>
+    <p class="form-note">Every story is read before it goes up. See the <a href="terms.html#wall">wall guidelines</a> and our <a href="privacy.html">privacy note</a>.</p>
+    <p class="wall-status" id="desk-status" role="status" style="margin:.8rem 0 0"></p>
+    <p class="crisis">If you're in danger or thinking of hurting yourself, please don't wait for a reply here. Reach out to local emergency services or someone you trust today.</p>
+  </form>
+</dialog>
+
+<script>
+  // The pinboard: notes on the wall, reading one, writing back, pinning your own.
+  document.addEventListener("DOMContentLoaded", async () => {
+    const { el } = Wall;
+    const $ = (id) => document.getElementById(id);
+    const PAPERS = ["notebook", "card", "sticky", "kraft"];
+    const PAGE = 12;
+    const board = $("pinboard"), more = $("more"), status = $("wall-status");
+    const reader = $("reader"), slips = $("slips"), replyForm = $("reply-form");
+    const desk = $("desk"), deskForm = $("desk-form"), deskSheet = $("desk-sheet");
+    const randomPen = () => String(Math.floor(Math.random() * 3));
+    const smooth = Wall.calm ? "auto" : "smooth";
+    let letters = [], shown = PAGE, current = null;
+
+    const paperOf = (l) => (PAPERS.includes(l.paper) ? l.paper : PAPERS[Wall.hash(l.id) % PAPERS.length]);
+    const backCount = (l) => "✎\uFE0E " + Wall.count(l.replies.length, "note back", "notes back", "Be the first to write back");
+    const fastener = (h) => (h % 2
+      ? el("span", { class: "tape", "aria-hidden": "true" })
+      : el("span", { class: `tack c${(h >> 3) % 3}`, "aria-hidden": "true" }));
+
+    function note(l) {
+      const h = Wall.hash(l.id);
+      const btn = el("button", { class: "pin-note paper", type: "button", "data-paper": paperOf(l), "data-pen": Wall.pen(l), "data-id": l.id },
+        l.to ? el("span", { class: "w-to", text: Wall.dear(l) }) : null,
+        el("span", { class: "w-body", text: Wall.preview(l.body, 260) }),
+        el("span", { class: "w-sign", text: Wall.signed(l) }),
+        el("span", { class: "w-foot" }, el("span", { text: Wall.when(l.createdAt) }), el("span", { class: "w-count", text: backCount(l) })),
+        l.sample ? el("span", { class: "sample-stamp", text: "Sample" })
+          : l.pending ? el("span", { class: "sample-stamp waiting", text: "Only you see this" }) : null);
+      btn.addEventListener("click", () => read(l, btn));
+      return el("li", { class: "pin story", style: `--r:${((h % 9) - 4) * 0.6}deg;--y:${((h >> 4) % 3) * 8}px` }, fastener(h), btn);
+    }
+
+    function render() {
+      board.querySelectorAll(".pin.story").forEach((n) => n.remove());
+      board.append(...letters.slice(0, shown).map(note));
+      $("more-wrap").hidden = letters.length <= shown;
+    }
+
+    function slip(r, isNew) {
+      const h = Wall.hash(r.id);
+      return el("li", { class: "slip" + (isNew ? " new" : ""), "data-pen": Wall.pen(r), style: `--r:${((h % 7) - 3) * 0.8}deg` },
+        el("span", { class: "tape", "aria-hidden": "true" }),
+        el("p", { text: r.body }),
+        el("p", { class: "s-sign", text: Wall.signed(r) }),
+        r.pending ? el("p", { class: "s-wait", text: "Waiting to go up · only you can see it" }) : null);
+    }
+
+    function renderSlips() {
+      slips.textContent = "";
+      const none = current.pending ? "Notes back open once your story is up on the wall." : "No notes yet. Be the first to write back.";
+      if (!current.replies.length) slips.append(el("li", { class: "slip empty" }, el("p", { text: none })));
+      current.replies.forEach((r) => slips.append(slip(r)));
+    }
+
+    function read(l, opener) {
+      current = l;
+      const sheet = $("reader-sheet");
+      sheet.dataset.paper = paperOf(l);
+      sheet.dataset.pen = Wall.pen(l);
+      $("reader-title").textContent = `${l.name || "Someone"}'s story`;
+      $("reader-to").textContent = l.to ? Wall.dear(l) : "";
+      $("reader-to").hidden = !l.to;
+      Wall.ink($("reader-body"), l.body);
+      $("reader-sign").textContent = Wall.signed(l);
+      $("reader-foot").replaceChildren(el("span", { text: Wall.when(l.createdAt) }), l.sample ? el("span", { text: "Sample" })
+        : l.pending ? el("span", { text: "Only you can see this until it's been read" }) : "");
+      replyForm.reset();
+      replyForm.hidden = !!l.pending;
+      replyForm.dataset.pen = randomPen();
+      $("reply-status").textContent = "";
+      renderSlips();
+      Wall.open(reader, opener);
+      reader.scrollTop = 0;
+    }
+
+    // Sends the note; while it's on its way the button rests, and a failure keeps every word in place.
+    async function sending(form, statusEl, waitText, task) {
+      const btn = form.querySelector('[type="submit"]');
+      btn.disabled = true;
+      statusEl.textContent = Wall.live ? waitText : "";
+      try { return await task(); } catch (_) {
+        statusEl.textContent = "It couldn't be sent just now. Everything you wrote is still here, so please try again in a moment.";
+        return null;
+      } finally { btn.disabled = false; }
+    }
+
+    replyForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(replyForm));
+      if (!data.body.trim()) return $("r-body").focus();
+      const r = await sending(replyForm, $("reply-status"), "Taping it on…", () => Wall.reply(current, { ...data, pen: replyForm.dataset.pen }));
+      if (!r) return;
+      current.replies.push(r);
+      slips.querySelector(".empty")?.remove();
+      const s = slip(r, true);
+      slips.append(s);
+      replyForm.reset();
+      replyForm.dataset.pen = randomPen();
+      s.scrollIntoView({ block: "nearest", behavior: smooth });
+      const count = board.querySelector(`[data-id="${CSS.escape(current.id)}"] .w-count`);
+      if (count) count.textContent = backCount(current);
+      $("reply-status").textContent = "Thank you for writing back. Notes are read before they go up, so for now only you can see yours.";
+    });
+
+    document.querySelectorAll("[data-desk]").forEach((b) => b.addEventListener("click", () => {
+      deskSheet.dataset.pen = randomPen();
+      $("desk-status").textContent = "";
+      Wall.open(desk, b);
+    }));
+    deskForm.addEventListener("change", (e) => {
+      if (e.target.name === "paper") deskSheet.dataset.paper = e.target.value;
+    });
+    deskForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(deskForm));
+      if (!data.body.trim()) return $("d-body").focus();
+      const l = await sending(deskForm, $("desk-status"), "Pinning it…", () => Wall.post({ ...data, pen: deskSheet.dataset.pen }));
+      if (!l) return;
+      $("desk-status").textContent = "";
+      letters.unshift(l);
+      shown++;
+      render();
+      const btn = board.querySelector(`[data-id="${CSS.escape(l.id)}"]`);
+      btn.closest(".pin").classList.add("new");
+      desk.returnTo = btn;
+      desk.close();
+      btn.focus({ preventScroll: true });
+      deskForm.reset();
+      deskSheet.dataset.paper = "notebook";
+      btn.scrollIntoView({ block: "center", behavior: smooth });
+      status.textContent = "Thank you for trusting the wall with your story. It goes up once it's been read. Until then, only you can see it.";
+    });
+
+    more.addEventListener("click", () => {
+      const from = shown;
+      shown += PAGE;
+      render();
+      board.querySelectorAll(".pin.story .pin-note")[from]?.focus();
+    });
+
+    Wall.wire(reader);
+    Wall.wire(desk);
+    if (Wall.live) status.textContent = "Gathering the notes…";
+    const res = await Wall.list();
+    letters = res.letters;
+    status.textContent = res.failed ? "The wall couldn't be reached just now. Please refresh the page in a moment." : "";
+    render();
+  });
+</script>
+</body>
+</html>

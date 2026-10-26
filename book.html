@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Book — Dear Someone</title>
+  <meta name="description" content="Dear Someone, a memoir in pieces by Marlène Mutwa: letters, poems and journal entries. Get notified when it is published.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Homemade+Apple&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap split wide-l">
+      <div>
+        <span class="eyebrow">Room I · The Book · Coming soon</span>
+        <!-- TODO(Marlène): confirm final subtitle and byline -->
+        <h1>Dear Someone, <em>a memoir in pieces</em>.</h1>
+        <p class="lead">It started as pages for my mother, so she could live my days with me from far away. Somewhere between the lines, it became a love letter: to her, to God, and now to you.</p>
+        <p class="eyebrow" style="margin-top:1.4rem">Paperback &amp; e-book</p>
+        <a class="btn" href="#notify">Notify me when it's out</a>
+      </div>
+      <div class="reveal" style="display:grid;place-items:center">
+        <div class="book-cover">
+          <span class="bc-stamp" aria-hidden="true">❦︎</span>
+          <span class="bc-dear">Dear someone,</span>
+          <span class="bc-sub">a memoir in pieces</span>
+          <span class="bc-by">Marlène Mutwa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pa-route-sec">
+    <div class="wrap">
+      <div class="pa-route" role="img" aria-label="A dotted route from Burundi to France, and a letter travelling from France to Burundi">
+        <svg viewBox="0 0 640 210" aria-hidden="true" focusable="false">
+          <defs>
+            <mask id="pa-route-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="210">
+              <path class="pa-route-draw" d="M64 150C190 18 450 18 576 150" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0"/>
+            </mask>
+          </defs>
+          <path class="pa-route-path" d="M64 150C190 18 450 18 576 150" mask="url(#pa-route-mask)"/>
+          <g class="pa-route-end from" transform="translate(64 150)"><circle class="halo" r="11"/><circle class="ring" r="11"/><circle class="dot" r="4.5"/></g>
+          <g class="pa-route-end to" transform="translate(576 150)"><circle class="ring" r="11"/><circle class="dot" r="4.5"/></g>
+          <g class="pa-route-letter"><g transform="translate(-17 -11)"><rect width="34" height="22" rx="2" fill="#fbf5ea" stroke="#4e3f2c" stroke-width="1.8"/><path d="M1.5 2 17 13.5 32.5 2" fill="none" stroke="#4e3f2c" stroke-width="1.8" stroke-linejoin="round"/><rect x="24" y="4" width="6" height="7" fill="#b4532a"/></g></g>
+        </svg>
+        <span class="pa-route-label from" aria-hidden="true">Burundi</span>
+        <span class="pa-route-label to" aria-hidden="true">France</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="narrow">
+      <span class="eyebrow">From the preface</span>
+      <div class="letter tilt-r reveal" style="color:var(--ink)">
+        <p>I was never good at speaking my life out loud, but writing? That I could do. So, if she could not live these moments with me, then I would offer them to her through my words.</p>
+        <p>But with time, it became more than just a book for my mom. It became a part of myself that I was learning to cherish, no matter how ugly it was.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cards3">
+      <div class="box reveal"><h3>Letters</h3><p>To a friend, to a country, to God, to whoever needs one.</p></div>
+      <div class="box reveal"><h3>Poems</h3><p>For the feelings that refused to sit in full sentences.</p></div>
+      <div class="box reveal"><h3>Journal entries</h3><p>Dated, unpolished and kept that way on purpose.</p></div>
+    </div>
+  </section>
+
+  <div id="notify" data-signup data-list="book" data-title="Be the first to hold it." data-text="One email when it's ready, plus early pages before anyone else." data-cta="Notify me"></div>
+</main>
+</body>
+</html>

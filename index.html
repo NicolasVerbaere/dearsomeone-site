@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dear Someone</title>
+  <meta name="description" content="Dear Someone, a world by Marlène Mutwa: a book, a card game, the New-ance podcast and a newsletter.">
+  <meta property="og:title" content="Dear Someone">
+  <meta property="og:description" content="A home for the things we rarely say out loud.">
+  <meta property="og:image" content="assets/img/reach.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Homemade+Apple&family=Jost:wght@400;500&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+
+  <!-- Envelope intro (shown once per visit) -->
+  <div class="envelope-intro" id="intro" hidden>
+    <button class="intro-skip" id="intro-skip">Skip</button>
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div>
+      <div class="env-letter">
+        <span class="script">Dear someone,</span>
+        <p>this one is for you.</p>
+      </div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <button class="seal" id="seal" aria-label="Open the letter">DS</button>
+    </div>
+    <p class="intro-hint">Break the seal</p>
+  </div>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="salutation" aria-label="Dear you,">Dear <span class="cycler" data-words='["someone","friend","soul","God","heart","you"]'>someone</span><span class="caret"></span>,</p>
+          <h1>A home for the things we rarely say <em>out loud</em>.</h1>
+          <p class="lead">Something to read, something to play, something to listen to, and letters for your inbox. Each room has its own door.</p>
+          <div class="actions">
+            <a class="btn" href="#rooms">Step inside</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="frame"><img src="assets/img/reach.jpg" alt="Marlène laughing and reaching toward the camera, against a warm terracotta backdrop" fetchpriority="high"></div>
+          <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
+            <defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+            <circle cx="60" cy="60" r="58" fill="#f5ead7"/>
+            <g class="ring"><text><textPath href="#circ">Read · Play · Listen · Write ·</textPath></text></g>
+            <text x="60" y="68" text-anchor="middle" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;letter-spacing:0;text-transform:none;fill:#b4532a">DS</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">The rooms</span>
+          <h2>Come in. Pick a room. <em>Stay a while.</em></h2>
+        </div>
+        <div class="pa-sheet reveal">
+          <p class="pa-selvage" aria-hidden="true"><span>Dear Someone</span><span class="pa-reg"><i data-room="book"></i><i data-room="game"></i><i data-room="pod"></i><i data-room="write"></i></span></p>
+          <ul class="pa-sheet-grid">
+            <li>
+              <a class="pa-tear" href="book.html">
+                <span class="pa-tear-slot"><span class="pa-stamp" data-room="book" aria-hidden="true"><span class="pa-stamp-paper pa-perf"><span class="pa-stamp-art"><span class="pa-stamp-den">I</span><span class="pa-stamp-motif" data-motif="book"></span><span class="pa-stamp-name">The Book</span></span></span></span></span>
+                <div class="pa-tear-cap">
+                  <h3 class="pa-sr">The Book</h3>
+                  <span class="pa-tear-meta">I · Read <span class="pa-tear-status">Coming soon</span></span>
+                  <span class="pa-tear-line">A memoir in pieces: letters, poems and journal entries.</span>
+                  <span class="pa-tear-cta">Get notified&nbsp;→</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="pa-tear" href="game.html">
+                <span class="pa-tear-slot"><span class="pa-stamp" data-room="game" aria-hidden="true"><span class="pa-stamp-paper pa-perf"><span class="pa-stamp-art"><span class="pa-stamp-den">II</span><span class="pa-stamp-motif" data-motif="game"></span><span class="pa-stamp-name">The Card Game</span></span></span></span></span>
+                <div class="pa-tear-cap">
+                  <h3 class="pa-sr">The Card Game</h3>
+                  <span class="pa-tear-meta">II · Play <span class="pa-tear-status">Coming soon</span></span>
+                  <span class="pa-tear-line">Cards that start the conversations we keep postponing.</span>
+                  <span class="pa-tear-cta">Draw a card&nbsp;→</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="pa-tear" href="podcast.html">
+                <span class="pa-tear-slot"><span class="pa-stamp" data-room="pod" aria-hidden="true"><span class="pa-stamp-paper pa-perf"><span class="pa-stamp-art"><span class="pa-stamp-den">III</span><span class="pa-stamp-motif" data-motif="pod"></span><span class="pa-stamp-name">New-ance</span></span></span></span></span>
+                <div class="pa-tear-cap">
+                  <h3 class="pa-sr">New-ance</h3>
+                  <span class="pa-tear-meta">III · Listen <span class="pa-tear-status">Coming soon</span></span>
+                  <span class="pa-tear-line">Two sides to every story. Bring yours.</span>
+                  <span class="pa-tear-cta">Share your story&nbsp;→</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="pa-tear" href="writing.html">
+                <span class="pa-tear-slot"><span class="pa-stamp" data-room="write" aria-hidden="true"><span class="pa-stamp-paper pa-perf"><span class="pa-stamp-art"><span class="pa-stamp-den">IV</span><span class="pa-stamp-motif" data-motif="write"></span><span class="pa-stamp-name">Writing</span></span></span></span></span>
+                <div class="pa-tear-cap">
+                  <h3 class="pa-sr">Writing</h3>
+                  <span class="pa-tear-meta">IV · Subscribe</span>
+                  <span class="pa-tear-line"><em>Mixed but not confused</em>, my essays on Substack.</span>
+                  <span class="pa-tear-cta">Read now&nbsp;→</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <p class="pa-selvage bottom" aria-hidden="true"><span>Par avion</span><span>I · II · III · IV</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wall-teaser" aria-labelledby="wall-teaser-title">
+      <div class="wrap split">
+        <div class="reveal">
+          <span class="eyebrow">The Wall · Share your story</span>
+          <h2 id="wall-teaser-title">Read a story. <em>Leave yours.</em></h2>
+          <p class="lead">Testimonies, lessons, small miracles and hard seasons, written by hand and pinned up for whoever needs them next.</p>
+          <a class="btn" href="wall.html">Visit the wall</a>
+        </div>
+        <a class="corkboard mini-board reveal" href="wall.html" tabindex="-1" aria-hidden="true">
+          <span class="pin" style="--r:-1.5deg">
+            <span class="tack c2"></span>
+            <span class="pin-note welcome paper" data-paper="card" data-pen="0">
+              <span class="script">Dear someone,</span>
+              <span class="w-body">this wall is yours. Pin what you lived through, what carried you, or what you're still carrying. Someone out there needs to read it.</span>
+              <span class="script" style="text-align:right">— M.</span>
+            </span>
+          </span>
+          <span class="pin blank" style="--r:1.6deg">
+            <span class="pin-blank"><b>+</b>Pin yours here</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap split">
+        <div class="polaroids reveal" aria-label="Photos of Marlène, drag them around">
+          <figure class="polaroid" style="left:2%;top:30px;transform:rotate(-7deg)"><span class="tape"></span><img src="assets/img/laugh.jpg" alt="Marlène laughing with eyes closed"><figcaption>joy, on purpose</figcaption></figure>
+          <figure class="polaroid" style="left:34%;top:120px;transform:rotate(5deg)"><span class="tape"></span><img src="assets/img/frame.jpg" alt="Marlène framing her face with her hands"><figcaption>peek-a-boo</figcaption></figure>
+          <figure class="polaroid" style="left:16%;top:250px;transform:rotate(-2deg)"><span class="tape"></span><img src="assets/img/smirk.jpg" alt="Marlène smiling playfully, leaning in"><figcaption>hi, dear someone</figcaption></figure>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Behind the letters</span>
+          <h2>The one who <em>writes them</em>.</h2>
+          <p class="drag-hint">↖ Go on, move the photos around</p>
+          <a class="btn gold" href="about.html">Meet Marlène</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="narrow">
+        <div class="letter tilt-l reveal">
+          <p><span class="script" style="font-size:1.5rem">Dear someone,</span></p>
+          <p>Take your time here. Nothing needs to be read in one visit, and the door stays open.</p>
+          <p class="sign">— M.</p>
+        </div>
+      </div>
+    </section>
+
+    <div data-signup data-list="home"></div>
+  </main>
+
+  <script>
+    // Envelope intro: once per browser session
+    (function () {
+      const intro = document.getElementById("intro");
+      if (sessionStorage.getItem("ds-opened")) return;
+      intro.hidden = false;
+      document.body.style.overflow = "hidden";
+      const close = () => {
+        sessionStorage.setItem("ds-opened", "1");
+        intro.classList.add("gone");
+        document.body.style.overflow = "";
+        setTimeout(() => intro.remove(), 900);
+      };
+      document.getElementById("seal").addEventListener("click", () => {
+        document.getElementById("envelope").classList.add("open");
+        setTimeout(close, 2300);
+      });
+      document.getElementById("intro-skip").addEventListener("click", close);
+      addEventListener("keydown", (e) => { if (e.key === "Escape") close(); }, { once: true });
+    })();
+  </script>
+</body>
+</html>

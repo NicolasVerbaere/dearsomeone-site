@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Card Game — Dear Someone</title>
+  <meta name="description" content="Dear Someone, the card game: 120 cards across three movements, Breaking, Healing and Becoming.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Homemade+Apple&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+<!-- Card symbols, redrawn from the printed prototype: Sankofa, Aya, Nkyinkyim and the spiral sun -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="adk-sankofa" viewBox="0 0 64 64"><path d="M48.2 18.3C42.6 16.3 36.8 10.2 32.3 9.5C25.1 9.5 19.3 14.5 19.3 20.7C19.3 27.1 24.8 32.2 31.8 32.2C36.7 32 44.6 27.9 48.4 23.3L49.5 26.6L51.1 25.9L51.9 28.6L53.2 28.1C53.4 34.8 50.4 50.1 31.6 50.1C20.5 50.1 10.6 39.9 10.6 29.4C10.6 14.7 20.7 2 32.6 2C42.1 2 47.9 7.6 47.9 15.6Z"/><path d="M28.6 47.5L25.6 47.5L19.5 58.3L15.6 58.9L16.4 61.8L22.7 61.8L22.7 58.3Z"/><path d="M35.2 47.5L38.2 47.5L44.4 58.3L48.2 58.9L47.4 61.8L41.1 61.8L41.1 58.3Z"/></symbol>
+  <symbol id="adk-aya" viewBox="0 0 64 64"><path d="M31.1 4.5L32.9 4.5L33.9 42L34.9 47L29.1 47L30.1 42Z"/><path d="M32 46.3C19.6 46.3 13.1 48.9 13.1 55.9C13.1 59 16.5 62 20.2 62C24.3 62 31.2 56.8 32 53.1C32.8 56.8 39.7 62 43.8 62C47.5 62 50.9 59 50.9 55.9C50.9 48.9 44.4 46.3 32 46.3Z"/><g fill="none" stroke="currentColor" stroke-linecap="round"><path stroke-width="2.2" d="M31.8 5.6C30.3 4.2 28.4 3.3 26.3 3.3C24.8 3.3 23.5 3.5 23.5 3.8"/><path stroke-width="2.2" d="M32.2 5.6C33.7 4.2 35.6 3.3 37.7 3.3C39.2 3.3 40.5 3.5 40.5 3.8"/><path stroke-width="2.3" d="M31.8 10.2C30 8.5 27.8 7.5 25.2 7.5C23.3 7.5 21.8 7.7 21.8 8.3"/><path stroke-width="2.3" d="M32.2 10.2C34.1 8.5 36.2 7.5 38.8 7.5C40.7 7.5 42.3 7.7 42.3 8.3"/><path stroke-width="2.3" d="M31.8 15C29.6 13.2 27.1 12 24.1 12C21.8 12 20 12.3 20 13.1"/><path stroke-width="2.3" d="M32.2 15C34.4 13.2 36.9 12 39.9 12C42.2 12 44 12.3 44 13.1"/><path stroke-width="2.4" d="M31.8 20.2C29.3 18.1 26.4 16.8 23 16.8C20.3 16.8 18.2 17.3 18.2 18.2"/><path stroke-width="2.4" d="M32.2 20.2C34.7 18.1 37.6 16.8 41 16.8C43.7 16.8 45.8 17.3 45.8 18.2"/><path stroke-width="2.5" d="M31.8 25.7C29 23.4 25.7 21.9 21.9 21.9C18.9 21.9 16.4 22.5 16.4 23.7"/><path stroke-width="2.5" d="M32.2 25.7C35 23.4 38.3 21.9 42.1 21.9C45.1 21.9 47.6 22.5 47.6 23.7"/><path stroke-width="2.5" d="M31.8 31.5C28.6 29.1 25.1 27.4 20.8 27.4C17.4 27.4 14.6 28.1 14.6 29.4"/><path stroke-width="2.5" d="M32.2 31.5C35.4 29.1 38.9 27.4 43.2 27.4C46.6 27.4 49.4 28.1 49.4 29.4"/><path stroke-width="2.6" d="M31.8 37.6C28.3 35 24.4 33.2 19.7 33.2C15.9 33.2 12.8 34 12.8 35.6"/><path stroke-width="2.6" d="M32.2 37.6C35.7 35 39.6 33.2 44.3 33.2C48.1 33.2 51.2 34 51.2 35.6"/><path stroke-width="2.7" d="M31.8 44.1C28 41.3 23.7 39.3 18.6 39.3C14.5 39.3 11 40.2 11 42"/><path stroke-width="2.7" d="M32.2 44.1C36 41.3 40.3 39.3 45.4 39.3C49.6 39.3 53 40.2 53 42"/></g></symbol>
+  <symbol id="adk-nkyinkyim" viewBox="0 0 64 64"><path d="M5.1 2L58.9 2L58.9 10.1L13.6 10.1L13.6 12.8L58.9 12.8L58.9 31.6L13.6 31.6L13.6 34.2L58.9 34.2L58.9 62L50.4 62L50.4 53L43.8 53L43.8 62L35.3 62L35.3 53L28.7 53L28.7 62L20.2 62L20.2 53L13.6 53L13.6 62L5.1 62L5.1 45L50.4 45L50.4 42.3L5.1 42.3L5.1 23.5L50.4 23.5L50.4 20.8L5.1 20.8Z"/></symbol>
+  <symbol id="ds-sun" viewBox="0 0 64 64"><path d="M33.7 14.5L32 1.5L30.3 14.5ZM40.3 16.5L41.6 8.9L37.1 15.2ZM45.6 20.8L53.6 10.4L43.2 18.4ZM48.8 26.9L55.1 22.4L47.5 23.7ZM49.5 33.7L62.5 32L49.5 30.3ZM47.5 40.3L55.1 41.6L48.8 37.1ZM43.2 45.6L53.6 53.6L45.6 43.2ZM37.1 48.8L41.6 55.1L40.3 47.5ZM30.3 49.5L32 62.5L33.7 49.5ZM23.7 47.5L22.4 55.1L26.9 48.8ZM18.4 43.2L10.4 53.6L20.8 45.6ZM15.2 37.1L8.9 41.6L16.5 40.3ZM14.5 30.3L1.5 32L14.5 33.7ZM16.5 23.7L8.9 22.4L15.2 26.9ZM20.8 18.4L10.4 10.4L18.4 20.8ZM26.9 15.2L22.4 8.9L23.7 16.5Z"/><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M30.1 32.6L29.9 32.3L29.7 32L29.7 31.6L29.7 31.2L29.7 30.7L29.9 30.3L30.1 29.9L30.4 29.5L30.8 29.2L31.2 28.9L31.7 28.7L32.3 28.6L32.9 28.6L33.5 28.6L34.1 28.8L34.6 29.1L35.2 29.5L35.6 30L36 30.6L36.3 31.2L36.5 32L36.6 32.7L36.5 33.5L36.3 34.2L36 35L35.5 35.7L34.9 36.3L34.2 36.8L33.4 37.2L32.6 37.5L31.7 37.7L30.7 37.6L29.8 37.5L28.9 37.1L28 36.6L27.2 36L26.5 35.2L25.9 34.3L25.5 33.3L25.3 32.2L25.2 31.1L25.3 30L25.7 28.9L26.2 27.8L26.8 26.8L27.7 26L28.7 25.2L29.8 24.7L31 24.3L32.3 24.1L33.6 24.1L34.9 24.4L36.2 24.9L37.3 25.6L38.4 26.4L39.3 27.5L40.1 28.7L40.6 30L40.9 31.5L41 33L40.9 34.4L40.5 35.9L39.8 37.3L38.9 38.6L37.8 39.7L36.5 40.7L35.1 41.4L33.5 41.9L31.9 42.1L30.2 42.1L28.6 41.8L27 41.2L25.4 40.3L24.1 39.2L22.9 37.9L22 36.4L21.3 34.7L20.9 32.9L20.7 31.1L20.9 29.2L21.4 27.4L22.2 25.7L23.3 24.1L24.6 22.7L26.2 21.5L27.9 20.6L29.8 20L31.8 19.6L33.9 19.7L35.9 20"/></symbol>
+</svg>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Room II · The Card Game</span>
+        <h1>For the conversations we keep <em>postponing</em>.</h1>
+        <p class="lead">One sentence to finish at a time. Every card begins the same way: <span class="script">Dear someone,</span></p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem">
+          <a class="btn" href="#waitlist">Join the waitlist</a>
+          <a class="btn ghost" href="#draw">Draw a card ↓</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">Ages 14+ · 2+ players · 120 cards</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="draw" class="band" style="padding-top:5rem">
+    <div class="wrap deck-stage">
+      <div>
+        <span class="eyebrow">Try it now</span>
+        <h2>Draw a card. <em>Finish the sentence.</em></h2>
+        <p>A sneak peek from each deck. Read it aloud, or just to yourself.</p>
+        <div class="filters" role="group" aria-label="Choose a movement">
+          <button class="chip" data-mv="all" aria-pressed="true">All</button>
+          <button class="chip breaking" data-mv="breaking" aria-pressed="false"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#adk-sankofa"/></svg>Breaking</button>
+          <button class="chip healing" data-mv="healing" aria-pressed="false"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#adk-aya"/></svg>Healing</button>
+          <button class="chip becoming" data-mv="becoming" aria-pressed="false"><svg class="sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#adk-nkyinkyim"/></svg>Becoming</button>
+        </div>
+        <div class="answer-box" id="answer-box">
+          <label for="answer" style="color:var(--sand)">Your answer stays in your browser, private and only for you</label>
+          <textarea id="answer" placeholder="Dear someone, …"></textarea>
+        </div>
+      </div>
+      <div>
+        <div class="deck">
+          <div class="stack"></div>
+          <div class="stack"></div>
+          <div class="play-card" id="card" role="button" tabindex="0" aria-live="polite" aria-label="Draw a card">
+            <div class="face back">
+              <span class="mono-big">DS</span>
+              <svg class="sun" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#ds-sun"/></svg>
+              <small>Tap to draw</small>
+            </div>
+            <div class="face front" id="card-front" data-mv="breaking">
+              <svg class="sym" id="card-ico" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#adk-sankofa"/></svg>
+              <span class="mv" id="card-mv">Breaking</span>
+              <span class="dear">Dear someone,</span>
+              <span class="prompt" id="card-prompt"></span>
+            </div>
+          </div>
+        </div>
+        <div class="deck-actions">
+          <button class="btn gold" id="next">Draw another</button>
+          <button class="btn ghost" id="write" style="color:var(--cream);border-color:var(--sand)">Write my answer</button>
+        </div>
+        <p class="peek-note">9 of 120 cards. <a href="#waitlist">The rest are waiting in the box →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="reveal" style="max-width:700px">
+        <span class="eyebrow">The three movements</span>
+        <h2>Every honest conversation <em>moves</em>.</h2>
+        <p class="lead">Played in order, the way healing tends to unfold.</p>
+      </div>
+      <div class="movements" style="margin-top:2.5rem">
+        <article class="movement breaking reveal">
+          <svg class="sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#adk-sankofa"/></svg>
+          <span class="adinkra">I · Sankofa</span>
+          <h3>Breaking</h3>
+          <p>Questioning and naming what no longer feels true.</p>
+        </article>
+        <article class="movement healing reveal">
+          <svg class="sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#adk-aya"/></svg>
+          <span class="adinkra">II · Aya</span>
+          <h3>Healing</h3>
+          <p>Letting the wound become wisdom.</p>
+        </article>
+        <article class="movement becoming reveal">
+          <svg class="sym" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#adk-nkyinkyim"/></svg>
+          <span class="adinkra">III · Nkyinkyim</span>
+          <h3>Becoming</h3>
+          <p>Growing toward who you are called to be.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="narrow reveal">
+      <div class="letter tilt-r">
+        <p><span class="script" style="font-size:1.4rem">Dear someone,</span></p>
+        <p>This is not a game where you are expected to have the right answers. It is an invitation to speak the things we rarely say aloud, and to be met with grace when we do.</p>
+        <p style="font-family:var(--sans);letter-spacing:.3em;font-size:.8rem;text-transform:uppercase;color:var(--rust)">Breathe · Be honest · Begin</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="cards3">
+        <div class="box reveal"><h3>Who it's for</h3><p>Friends tired of small talk, couples, families, small groups and youth ministries.</p></div>
+        <div class="box reveal"><h3>What's inside</h3><p>40 cards per movement, a guidebook, and a box made for the coffee table, not the drawer.</p></div>
+        <div class="box reveal"><h3>Where it's at</h3><p>Making its first rounds among friends. The shop opens after.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="feedback">
+    <div class="wrap split wide-l">
+      <div class="reveal">
+        <span class="eyebrow">Already have the deck?</span>
+        <h2>How did it <em>feel</em> around your table?</h2>
+        <p class="lead">Tell us what moved you, what didn't, what made you laugh, and what you'd change. Your notes help shape the next edition.</p>
+        <form class="js-form" data-list="game-feedback" data-ok="Thank you for your notes. We read every single one.">
+          <div class="form-grid">
+            <div class="full"><label for="fb-group">We played with</label>
+              <select id="fb-group" name="group"><option>Friends</option><option>Partner</option><option>Family</option><option>Church / small group</option><option>Just me</option></select></div>
+            <div class="full"><label for="fb-how">How did it go?</label><textarea id="fb-how" name="experience" required data-grow placeholder="The card that stayed with you, the moment the table went quiet…"></textarea></div>
+            <div class="full"><label for="fb-ideas">What would you change or add? <span class="opt">(optional)</span></label><textarea id="fb-ideas" name="ideas" data-grow placeholder="A card you'd rewrite, a rule you'd love, anything…"></textarea></div>
+            <div><label for="fb-name">Your name <span class="opt">(optional)</span></label><input class="input" id="fb-name" name="name" autocomplete="name"></div>
+            <div><label for="fb-email">Email <span class="opt">(optional, if you'd like a reply)</span></label><input class="input" id="fb-email" name="email" type="email" autocomplete="email"></div>
+          </div>
+          <p style="margin-top:1.4rem"><button class="btn" type="submit">Send my notes</button></p>
+        </form>
+      </div>
+      <div class="arch reveal"><img src="assets/img/smile.jpg" alt="Marlène smiling warmly" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div id="waitlist" data-signup data-list="game-waitlist" data-title="Be first when the deck ships." data-text="Launch-day news and early-bird pricing." data-cta="Join the waitlist"></div>
+</main>
+
+<script>
+  // A sneak peek only: 3 real cards per deck. The full deck stays in the box. Every card begins with "Dear someone,".
+  const PROMPTS = {
+    breaking: [
+      "a part of my life that no longer feels honest is…",
+      "one thing I confuse with love too often is…",
+      "something I’ve mistaken for peace but is actually avoidance is…",
+    ],
+    healing: [
+      "healing began for me the day I stopped pretending that…",
+      "something I needed more than advice was…",
+      "a small, ordinary thing that quietly heals me is…",
+    ],
+    becoming: [
+      "the older I grow, the more I realize I want my life to feel like…",
+      "one thing I am slowly learning to stop apologizing for is…",
+      "if my life became a letter to the world, I would want it to say…",
+    ],
+  };
+  const ICO = { breaking: "adk-sankofa", healing: "adk-aya", becoming: "adk-nkyinkyim" };
+
+  const card = document.getElementById("card");
+  const front = document.getElementById("card-front");
+  let mode = "all", last = "";
+
+  function pick() {
+    const pool = mode === "all"
+      ? Object.entries(PROMPTS).flatMap(([mv, list]) => list.map((p) => [mv, p]))
+      : PROMPTS[mode].map((p) => [mode, p]);
+    let choice;
+    do { choice = pool[Math.floor(Math.random() * pool.length)]; } while (pool.length > 1 && choice[1] === last);
+    last = choice[1];
+    return choice;
+  }
+  function draw() {
+    const [mv, prompt] = pick();
+    const reveal = () => {
+      front.dataset.mv = mv;
+      document.getElementById("card-mv").textContent = mv[0].toUpperCase() + mv.slice(1);
+      document.getElementById("card-prompt").textContent = prompt;
+      document.querySelector("#card-ico use").setAttribute("href", "#" + ICO[mv]);
+      card.setAttribute("aria-label", `${mv} card: Dear someone, ${prompt}`);
+      card.classList.add("flipped");
+      card.classList.remove("turning");
+    };
+    card.classList.add("turning");
+    setTimeout(reveal, 280);
+  }
+  card.addEventListener("click", draw);
+  card.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); draw(); } });
+  document.getElementById("next").addEventListener("click", draw);
+  document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach((x) => x.setAttribute("aria-pressed", x === c));
+    mode = c.dataset.mv;
+    draw();
+  }));
+
+  const box = document.getElementById("answer-box");
+  const ta = document.getElementById("answer");
+  ta.value = localStorage.getItem("ds-answer") || "";
+  ta.addEventListener("input", () => localStorage.setItem("ds-answer", ta.value));
+  document.getElementById("write").addEventListener("click", () => {
+    box.classList.add("show");
+    ta.focus();
+  });
+</script>
+</body>
+</html>

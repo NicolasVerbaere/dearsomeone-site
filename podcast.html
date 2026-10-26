@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New-ance Podcast — Dear Someone</title>
+  <meta name="description" content="New-ance, a podcast by Marlène Mutwa about the nuance in our stories. Send in yours. Coming soon.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Homemade+Apple&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+<main id="main">
+
+  <section class="page-hero band" style="padding-bottom:5rem">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Room III · The Podcast · Coming soon</span>
+        <h1 style="color:var(--cream)">New-ance.</h1>
+        <p class="pod-sub">Two things can be true.</p>
+        <p class="lead" style="color:var(--sand)">You bring what you're carrying. We sit with it, then look for the other side of it, together.</p>
+        <div class="actions">
+          <a class="btn gold" href="#share">Send in your story</a>
+          <a class="btn ghost" href="#listen" style="color:var(--cream);border-color:var(--sand)">Hear episode one first</a>
+        </div>
+      </div>
+      <div class="reveal pod-visual">
+        <div class="arch"><img src="assets/img/laugh.jpg" alt="Marlène laughing with her eyes closed"></div>
+        <div class="wave" aria-hidden="true">
+          <i style="animation-delay:-.1s"></i><i style="animation-delay:-.5s"></i><i style="animation-delay:-.9s"></i><i style="animation-delay:-.3s"></i><i style="animation-delay:-1.1s"></i><i style="animation-delay:-.7s"></i><i style="animation-delay:-.2s"></i><i style="animation-delay:-1.3s"></i><i style="animation-delay:-.6s"></i><i style="animation-delay:-1s"></i><i style="animation-delay:-.4s"></i><i style="animation-delay:-.8s"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Turn it over</span>
+        <h2>Every story has <em>another side</em>.</h2>
+        <p>Tap a card.</p>
+      </div>
+      <div class="sides">
+        <button class="side-card reveal" aria-pressed="false">
+          <span class="sc a"><small>one side</small><span>The door I prayed for didn't open.</span><i>turn it over ↻</i></span>
+          <span class="sc b"><small>the other side</small><span>I'm still sad. And I can see what this room has given me.</span><i>↻</i></span>
+        </button>
+        <button class="side-card reveal" aria-pressed="false">
+          <span class="sc a"><small>one side</small><span>I miss the people I left behind.</span><i>turn it over ↻</i></span>
+          <span class="sc b"><small>the other side</small><span>Missing them this much means I was loved this much.</span><i>↻</i></span>
+        </button>
+        <button class="side-card reveal" aria-pressed="false">
+          <span class="sc a"><small>one side</small><span>I finally got the thing I asked God for.</span><i>turn it over ↻</i></span>
+          <span class="sc b"><small>the other side</small><span>Nobody told me a blessing could cost something too.</span><i>↻</i></span>
+        </button>
+        <button class="side-card reveal" aria-pressed="false">
+          <span class="sc a"><small>one side</small><span>I'm tired of being the strong one.</span><i>turn it over ↻</i></span>
+          <span class="sc b"><small>the other side</small><span>Maybe strength can also look like asking.</span><i>↻</i></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">How an episode unfolds</span>
+        <h2>Heard first. <em>Then turned over.</em></h2>
+      </div>
+      <ol class="steps on-dark flow reveal">
+        <li><strong>You write in.</strong> A struggle, a question, a blessing or something that hurt. Named or anonymous.</li>
+        <li><strong>We sit with it.</strong> The hard part gets heard first. Nothing is rushed or explained away.</li>
+        <li><strong>We turn it over.</strong> Gently, together, sometimes with a guest, we look for what else is true.</li>
+        <li><strong>You leave with both.</strong> Not a fix. A wider view.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="wrap split wide-l" style="align-items:start">
+      <div class="letter reveal">
+        <form class="js-form" data-list="podcast-story" data-ok="Received, with care. If we'd like to share it, we'll ask you first.">
+          <span class="script" style="font-size:1.4rem">Dear New-ance,</span>
+          <div class="form-grid">
+            <div class="full"><label for="p-kind">This is</label>
+              <select id="p-kind" name="kind">
+                <option>A struggle</option>
+                <option>A question</option>
+                <option>A blessing</option>
+                <option>Something that hurt</option>
+                <option>I'm not sure yet</option>
+              </select></div>
+            <div class="full"><label for="p-story">My story</label>
+              <p class="field-hint" id="p-story-hint">Write as much as you need. There's no word limit.</p>
+              <textarea id="p-story" class="roomy" name="story" required data-grow aria-describedby="p-story-hint" placeholder="Take your time…"></textarea></div>
+            <div><label for="p-name">Call me <span class="opt">(optional)</span></label><input class="input" id="p-name" name="name" autocomplete="given-name"></div>
+            <div><label for="p-email">Write back to</label><input class="input" id="p-email" name="email" type="email" required autocomplete="email"></div>
+          </div>
+          <label class="check"><input type="checkbox" name="consent" value="yes"> You may share this on the show, without my name.</label>
+          <p style="margin-top:1.2rem"><button class="btn" type="submit">Send it in</button></p>
+        </form>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Send it in</span>
+        <h2>What are you <em>carrying</em>?</h2>
+        <p class="lead">It doesn't have to be big, finished or tidy. It only has to be yours.</p>
+        <p class="form-note">If you're in danger or thinking of hurting yourself, please don't wait for an episode. Reach out to local emergency services or someone you trust today.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="listen" data-signup data-list="podcast" data-title="Hear episode one first." data-text="One email the day it airs, with where to listen." data-cta="Count me in"></div>
+</main>
+
+<script>
+  // "Turn it over": two-step flip (turn to the edge, swap sides, turn back)
+  document.querySelectorAll(".side-card").forEach((c) => c.addEventListener("click", () => {
+    c.classList.add("turning");
+    setTimeout(() => {
+      const on = c.classList.toggle("turned");
+      c.setAttribute("aria-pressed", on);
+      c.classList.remove("turning");
+    }, 220);
+  }));
+</script>
+</body>
+</html>
