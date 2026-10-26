@@ -17,22 +17,6 @@
 </head>
 <body>
 
-  <!-- Envelope intro (shown once per visit) -->
-  <div class="envelope-intro" id="intro" hidden>
-    <button class="intro-skip" id="intro-skip">Skip</button>
-    <div class="envelope" id="envelope">
-      <div class="env-back"></div>
-      <div class="env-letter">
-        <span class="script">Dear someone,</span>
-        <p>this one is for you.</p>
-      </div>
-      <div class="env-front"></div>
-      <div class="env-flap"></div>
-      <button class="seal" id="seal" aria-label="Open the letter">DS</button>
-    </div>
-    <p class="intro-hint">Break the seal</p>
-  </div>
-
   <main id="main">
     <section class="hero">
       <div class="wrap">
@@ -167,27 +151,5 @@
 
     <div data-signup data-list="home"></div>
   </main>
-
-  <script>
-    // Envelope intro: once per browser session
-    (function () {
-      const intro = document.getElementById("intro");
-      if (sessionStorage.getItem("ds-opened")) return;
-      intro.hidden = false;
-      document.body.style.overflow = "hidden";
-      const close = () => {
-        sessionStorage.setItem("ds-opened", "1");
-        intro.classList.add("gone");
-        document.body.style.overflow = "";
-        setTimeout(() => intro.remove(), 900);
-      };
-      document.getElementById("seal").addEventListener("click", () => {
-        document.getElementById("envelope").classList.add("open");
-        setTimeout(close, 2300);
-      });
-      document.getElementById("intro-skip").addEventListener("click", close);
-      addEventListener("keydown", (e) => { if (e.key === "Escape") close(); }, { once: true });
-    })();
-  </script>
 </body>
 </html>
