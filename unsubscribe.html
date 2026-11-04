@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unsubscribe — Dear Someone</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="https://dearsomeone.one/unsubscribe.html">
+  <link rel="alternate" hreflang="fr" href="https://dearsomeone.one/fr/unsubscribe.html">
+  <link rel="alternate" hreflang="x-default" href="https://dearsomeone.one/unsubscribe.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Homemade+Apple&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+<main id="main">
+  <section class="legal">
+    <div class="narrow" id="unsub" aria-live="polite">
+      <span class="eyebrow">Your emails</span>
+      <h1>One moment…</h1>
+    </div>
+  </section>
+</main>
+<script>
+const S = {
+  done: "Done, <em>with love</em>.",
+  lists: { letters: "my letters", book: "news about the book", game: "news about the card game", podcast: "news about New-ance" },
+  offOne: (name) => `You won’t get ${name} any more.`,
+  still: (names) => `You’ll still get ${names}. If you’d rather hear nothing at all:`,
+  and: " and ",
+  lastOne: "That was the last list you were on, so no more emails from Dear Someone.",
+  noMore: "You won’t get any more emails from Dear Someone.",
+  stopAll: "Stop all emails from Dear Someone",
+  thanks: "Thank you for the time you spent with Dear Someone. The door stays open, whenever you’d like to come back.",
+  back: "Back to Dear Someone",
+  badTitle: "This link doesn’t <em>work any more</em>.",
+  bad: 'Write to <a href="mailto:info.dearsomeone@gmail.com">info.dearsomeone@gmail.com</a> and I’ll take you off the list myself.',
+  failTitle: "Something <em>went wrong</em>.",
+  fail: 'Please try again in a moment, or write to <a href="mailto:info.dearsomeone@gmail.com">info.dearsomeone@gmail.com</a> and I’ll take you off the list myself.',
+};
+</script>
+<script>
+// Unsubscribing happens here, in the visitor's browser, so a mail scanner opening the link changes nothing.
+document.addEventListener("DOMContentLoaded", function () {
+  const q = new URLSearchParams(location.search);
+  const token = q.get("t") || "";
+  const list = q.get("l") || "all";
+  const box = document.getElementById("unsub");
+  const show = (title, lines, all) => {
+    box.innerHTML = `<h1>${title}</h1>` + lines.map((l) => `<p>${l}</p>`).join("") +
+      (all ? `<p><button class="btn" type="button" id="all">${S.stopAll}</button></p>` : "") +
+      `<p>${S.thanks}</p><p><a class="btn ghost" href="index.html">${S.back}</a></p>`;
+    const b = document.getElementById("all");
+    if (b) b.onclick = () => { b.disabled = true; go("all"); };
+  };
+  const join = (names) => names.length > 1 ? names.slice(0, -1).join(", ") + S.and + names[names.length - 1] : names[0];
+  async function go(scope) {
+    try {
+      const res = await sendForm({ list: "unsubscribe", token: token, l: list, scope: scope });
+      const left = (res.left || []).filter((l) => S.lists[l]).map((l) => S.lists[l]);
+      if (scope === "all" || res.list === "all") show(S.done, [S.noMore]);
+      else if (!left.length) show(S.done, [S.offOne(S.lists[res.list] || S.lists.letters), S.lastOne]);
+      else show(S.done, [S.offOne(S.lists[res.list] || S.lists.letters), S.still(join(left))], true);
+    } catch (err) {
+      if (/unknown/.test(err.message)) show(S.badTitle, [S.bad]);
+      else show(S.failTitle, [S.fail]);
+    }
+  }
+  // The language switch keeps the link, so the other version shows the same answer.
+  document.querySelectorAll(".lang-switch a").forEach((a) => { a.href += location.search; });
+  if (!token || !CONFIG.formEndpoint) show(S.badTitle, [S.bad]);
+  else go(list === "all" ? "all" : "list");
+});
+</script>
+</body>
+</html>
