@@ -17,29 +17,104 @@ const ICONS = {
   mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2zm2 2v.4l8 5.3 8-5.3V7zm16 10V9.8l-8 5.3-8-5.3V17z"/></svg>',
 };
 
-const NAV = [
-  ["book.html", "Book"],
-  ["game.html", "Game"],
-  ["podcast.html", "Podcast"],
-  ["writing.html", "Writing"],
-  ["about.html", "About"],
-  ["connect.html", "Connect"],
-];
+/* ---------- Language: English at the root, French in /fr/ (same file names) ---------- */
+const LANG = document.documentElement.lang.startsWith("fr") ? "fr" : "en";
+const STRINGS = {
+  en: {
+    nav: ["Book", "Game", "Podcast", "Writing", "About", "Connect"],
+    skip: "Skip to content", home: "Dear Someone home", menu: "Open menu", mainNav: "Main", language: "Language",
+    withLove: "With love, always", rooms: "The rooms", sayHello: "Say hello",
+    book: "The Book", game: "The Card Game", podcast: "New-ance Podcast", writing: "Writing",
+    meet: "Meet Marlène", contact: "Contact", wall: "The Wall", press: "Press &amp; Media kit",
+    privacy: "Privacy", terms: "Terms", email: "Email",
+    openNote: "Open a little note", aNote: "A little note", dear: "Dear someone,", another: "Another one →",
+    to: "To", from: "From", yourEmail: ": your email address", placeholder: "your@email.com",
+    listEyebrow: "The mailing list", listTitle: "My letters, delivered to you.",
+    listText: "Leave your email address and I’ll write to you: a warm note now and then, and first word whenever a new door opens.",
+    listCta: "Subscribe", listOk: "Thank you, dear someone. Check your inbox soon.",
+    unsub: 'You can stop receiving my letters at any time. See our <a href="privacy.html">privacy note</a>.',
+    honeypot: "Leave this empty", thanks: "Thank you, dear someone.",
+    pasteCopied: "(Your full letter is copied. Paste it here.)", pasteManual: "(Please paste your letter here.)",
+    longCopied: "Your letter is long, so we copied it for you. Paste it into the email that just opened.",
+    longManual: "Your letter is long. Please copy it into the email that just opened. Everything you wrote is still here.",
+    psalm: "PSALM", verse: "46:5", locale: "en-GB",
+    notes: [
+      "you are allowed to begin again, as many times as it takes.",
+      "the version of you that survived deserves your gentleness.",
+      "rest is not a reward. It is part of the becoming.",
+      "you can be grateful and still grieve. Both are allowed.",
+      "what you call 'too much' may be exactly what someone needs.",
+      "grace was never meant to be earned. Receive it.",
+      "your story is not over just because this chapter is hard.",
+      "be as patient with yourself as God is with you.",
+    ],
+  },
+  fr: {
+    nav: ["Livre", "Jeu", "Podcast", "Écrits", "À propos", "Contact"],
+    skip: "Aller au contenu", home: "Dear Someone, accueil", menu: "Ouvrir le menu", mainNav: "Principal", language: "Langue",
+    withLove: "Avec amour, toujours", rooms: "Les pièces", sayHello: "Dire bonjour",
+    book: "Le Livre", game: "Le Jeu de cartes", podcast: "Le podcast New-ance", writing: "Écrits",
+    meet: "Découvrir Marlène", contact: "Contact", wall: "Le Mur", press: "Presse &amp; kit média",
+    privacy: "Confidentialité", terms: "Conditions d’utilisation", email: "E-mail",
+    openNote: "Ouvrir un petit mot", aNote: "Un petit mot", dear: "Cher quelqu’un,", another: "Un autre →",
+    to: "À", from: "De", yourEmail: " : ton adresse e-mail", placeholder: "ton@email.com",
+    listEyebrow: "La lettre", listTitle: "Mes lettres, jusqu’à toi.",
+    listText: "Laisse ton adresse e-mail et je t’écrirai : un mot tendre de temps en temps, et l’exclusivité chaque fois qu’une nouvelle porte s’ouvre.",
+    listCta: "Je m’abonne", listOk: "Merci, cher quelqu’un. Surveille ta boîte mail.",
+    unsub: 'Tu peux arrêter de recevoir mes lettres à tout moment. Voir notre <a href="privacy.html">note de confidentialité</a>.',
+    honeypot: "Laisser vide", thanks: "Merci, cher quelqu’un.",
+    pasteCopied: "(Ta lettre complète est copiée. Colle-la ici.)", pasteManual: "(Colle ta lettre ici, s’il te plaît.)",
+    longCopied: "Ta lettre est longue, alors nous l’avons copiée pour toi. Colle-la dans l’e-mail qui vient de s’ouvrir.",
+    longManual: "Ta lettre est longue. Copie-la dans l’e-mail qui vient de s’ouvrir. Tout ce que tu as écrit est encore là.",
+    psalm: "PSAUME", verse: "46:6", locale: "fr-FR",
+    notes: [
+      "tu as le droit de recommencer, autant de fois qu’il le faudra.",
+      "la version de toi qui a survécu mérite ta douceur.",
+      "le repos n’est pas une récompense. Il fait partie de ton devenir.",
+      "tu peux dire merci et avoir du chagrin en même temps. Les deux sont permis.",
+      "ce que tu appelles « trop » est peut-être exactement ce dont quelqu’un a besoin.",
+      "la grâce n’a jamais été faite pour être méritée. Reçois-la.",
+      "ton histoire n’est pas finie parce que ce chapitre est difficile.",
+      "aie pour toi la patience que Dieu a pour toi.",
+    ],
+  },
+};
+const T = STRINGS[LANG];
 
 const here = location.pathname.split("/").pop() || "index.html";
+// Pages with <base href="/"> (the 404 page) have no twin, so the switch goes to that language's home.
+const twin = (lang) => document.querySelector("base")
+  ? (lang === "fr" ? "/fr/" : "/")
+  : (lang === "fr" ? "fr/" : "../") + (here === "index.html" ? "" : here);
+
+// Someone who chose French lands on the French home page next time they type the address.
+try {
+  const sameSite = document.referrer && new URL(document.referrer).origin === location.origin;
+  if (LANG === "en" && here === "index.html" && !sameSite && localStorage.getItem("ds-lang") === "fr") location.replace(twin("fr"));
+} catch (_) { /* storage blocked */ }
+
+const NAV = ["book.html", "game.html", "podcast.html", "writing.html", "about.html", "connect.html"].map((href, i) => [href, T.nav[i]]);
+
+function langSwitch() {
+  const other = LANG === "fr" ? "en" : "fr";
+  const cur = `<span aria-current="true">${LANG.toUpperCase()}</span>`;
+  const alt = `<a href="${twin(other)}" hreflang="${other}" lang="${other}" data-lang="${other}" title="${other === "fr" ? "Lire en français" : "Read in English"}">${other.toUpperCase()}</a>`;
+  return `<div class="lang-switch" role="group" aria-label="${T.language}">${LANG === "en" ? cur + alt : alt + cur}</div>`;
+}
 
 function header() {
   const links = NAV.map(([href, label]) =>
     `<a href="${href}"${href === here ? ' aria-current="page"' : ""}>${label}</a>`).join("");
   return `
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">${T.skip}</a>
   <header class="site-header">
     <div class="wrap">
-      <a class="logo" href="index.html" aria-label="Dear Someone home">
+      <a class="logo" href="index.html" aria-label="${T.home}">
         <span class="mono">DS</span><span class="word">Dear Someone</span>
       </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
-      <nav class="nav" id="nav" aria-label="Main">${links}</nav>
+      <nav class="nav" id="nav" aria-label="${T.mainNav}">${links}</nav>
+      ${langSwitch()}
+      <button class="nav-toggle" aria-label="${T.menu}" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
     </div>
   </header>`;
 }
@@ -49,7 +124,7 @@ function socials() {
     <a href="${CONFIG.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${ICONS.instagram}</a>
     <a href="${CONFIG.tiktok}" target="_blank" rel="noopener" aria-label="TikTok">${ICONS.tiktok}</a>
     <a href="${CONFIG.substack}" target="_blank" rel="noopener" aria-label="Substack">${ICONS.substack}</a>
-    <a href="mailto:${CONFIG.email}" aria-label="Email">${ICONS.mail}</a>
+    <a href="mailto:${CONFIG.email}" aria-label="${T.email}">${ICONS.mail}</a>
   </div>`;
 }
 
@@ -59,50 +134,50 @@ function footer() {
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <span class="eyebrow" style="color:var(--sand)">With love, always</span>
+          <span class="eyebrow" style="color:var(--sand)">${T.withLove}</span>
           <div class="foot-sign">— Marlène</div>
           ${socials()}
         </div>
         <div>
-          <span class="eyebrow" style="color:var(--sand)">The rooms</span>
+          <span class="eyebrow" style="color:var(--sand)">${T.rooms}</span>
           <ul class="foot-list">
-            <li><a href="book.html">The Book</a></li>
-            <li><a href="game.html">The Card Game</a></li>
-            <li><a href="podcast.html">New-ance Podcast</a></li>
-            <li><a href="writing.html">Writing</a></li>
+            <li><a href="book.html">${T.book}</a></li>
+            <li><a href="game.html">${T.game}</a></li>
+            <li><a href="podcast.html">${T.podcast}</a></li>
+            <li><a href="writing.html">${T.writing}</a></li>
           </ul>
         </div>
         <div>
-          <span class="eyebrow" style="color:var(--sand)">Say hello</span>
+          <span class="eyebrow" style="color:var(--sand)">${T.sayHello}</span>
           <ul class="foot-list">
-            <li><a href="about.html">Meet Marlène</a></li>
-            <li><a href="connect.html">Contact</a></li>
-            <li><a href="wall.html">The Wall</a></li>
-            <li><a href="press.html">Press &amp; Media kit</a></li>
+            <li><a href="about.html">${T.meet}</a></li>
+            <li><a href="connect.html">${T.contact}</a></li>
+            <li><a href="wall.html">${T.wall}</a></li>
+            <li><a href="press.html">${T.press}</a></li>
           </ul>
         </div>
       </div>
       <div class="foot-bottom">
         <span>© ${new Date().getFullYear()} Dear Someone · Marlène Mutwa</span>
-        <span><a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></span>
+        <span><a href="privacy.html">${T.privacy}</a> &nbsp;·&nbsp; <a href="terms.html">${T.terms}</a></span>
       </div>
     </div>
   </footer>
-  <button class="float-note" aria-label="Open a little note" aria-expanded="false">✉︎</button>
-  <div class="note-pop" role="dialog" aria-label="A little note">
-    <span class="script">Dear someone,</span>
+  <button class="float-note" aria-label="${T.openNote}" aria-expanded="false">✉︎</button>
+  <div class="note-pop" role="dialog" aria-label="${T.aNote}">
+    <span class="script">${T.dear}</span>
     <p id="note-text"></p>
-    <button class="tiny" id="note-next">Another one →</button>
+    <button class="tiny" id="note-next">${T.another}</button>
   </div>`;
 }
 
 /* ---------- Postal pieces: stamps, postmarks and the postbox ---------- */
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const PA_ROOMS = {
-  book: { num: "I", name: "The Book" },
-  game: { num: "II", name: "The Card Game" },
+  book: { num: "I", name: T.book },
+  game: { num: "II", name: T.game },
   pod: { num: "III", name: "New-ance" },
-  write: { num: "IV", name: "Writing" },
+  write: { num: "IV", name: T.writing },
 };
 const svg100 = (inner) => `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${inner}</svg>`;
 const MOTIF = {
@@ -148,7 +223,7 @@ function paPostmark(o = {}) {
   </filter></defs></svg>`);
   const id = "pa-pm" + ++pmN;
   const d = new Date(o.date || Date.now());
-  const dm = d.toLocaleDateString("en-GB", { day: "2-digit", month: "short" }).replace(".", "").toUpperCase();
+  const dm = d.toLocaleDateString(T.locale, { day: "2-digit", month: "short" }).replace(".", "").toUpperCase();
   return `<svg class="pa-postmark${o.cls ? " " + o.cls : ""}" viewBox="0 0 100 100" style="--rot:${o.rot ?? -12}deg" aria-hidden="true" focusable="false"><g filter="url(#pa-ink)">
     <defs><path id="${id}t" d="M17,50a33,33 0 0,1 66,0"/><path id="${id}b" d="M10.5,50a39.5,39.5 0 0,0 79,0"/></defs>
     <g fill="currentColor" stroke="none" font-size="9" letter-spacing="1.3"><text><textPath href="#${id}t" startOffset="50%" text-anchor="middle">${esc(o.top || "DEAR SOMEONE")}</textPath></text><text><textPath href="#${id}b" startOffset="50%" text-anchor="middle">${esc(o.bottom || "PAR AVION")}</textPath></text></g>
@@ -157,29 +232,29 @@ function paPostmark(o = {}) {
   </g></svg>`;
 }
 
-const ENVELOPE_HEAD = '<p class="pa-env-head" aria-hidden="true">Par avion</p><div class="pa-env-row"><span class="pa-lbl">To</span><span class="pa-hand">Marlène</span></div>';
+const ENVELOPE_HEAD = '<p class="pa-env-head" aria-hidden="true">Par avion</p><div class="pa-env-row"><span class="pa-lbl">' + T.from + '</span><span class="pa-hand">Marlène</span></div>';
 
 function signupBlock(el) {
-  const title = el.dataset.title || "Letters, delivered.";
-  const text = el.dataset.text || "A warm note from me now and then, and first word whenever a new door opens.";
-  const cta = el.dataset.cta || "Send me letters";
+  const title = el.dataset.title || T.listTitle;
+  const text = el.dataset.text || T.listText;
+  const cta = el.dataset.cta || T.listCta;
   const list = el.dataset.list || "newsletter";
   const room = { "book.html": "book", "game.html": "game", "podcast.html": "pod", "writing.html": "write" }[here] || "ds";
   el.outerHTML = `
   <section class="pa-post"${el.id ? ` id="${el.id}"` : ""} aria-labelledby="signup-${list}">
     <div class="wrap pa-post-grid">
       <div class="pa-post-copy">
-        <span class="eyebrow">The mailing list</span>
+        <span class="eyebrow">${T.listEyebrow}</span>
         <h2 id="signup-${list}">${title}</h2>
         <p class="lead">${text}</p>
       </div>
       <div class="pa-post-stage">
-        <form class="js-form pa-envelope pa-airmail" data-list="${list}" data-ok="Thank you, dear someone. Check your inbox soon.">
+        <form class="js-form pa-envelope pa-airmail" data-list="${list}" data-ok="${T.listOk}">
           ${paStamp(room, { cls: "pa-env-stamp" })}
           ${ENVELOPE_HEAD}
-          <div class="pa-env-row"><label class="pa-lbl" for="em-${list}">From<span class="pa-sr">: your email address</span></label><input id="em-${list}" type="email" name="email" placeholder="your@email.com" required autocomplete="email"></div>
+          <div class="pa-env-row"><label class="pa-lbl" for="em-${list}">${T.to}<span class="pa-sr">${T.yourEmail}</span></label><input id="em-${list}" type="email" name="email" placeholder="${T.placeholder}" required autocomplete="email"></div>
           <button class="btn" type="submit">${cta}</button>
-          <p class="form-note">You can unsubscribe at any time. See our <a href="privacy.html">privacy note</a>.</p>
+          <p class="form-note">${T.unsub}</p>
         </form>
         <div class="pa-postbox" aria-hidden="true">${POSTBOX}</div>
         <p class="pa-post-ok" role="status" aria-live="polite"></p>
@@ -201,11 +276,15 @@ toggle.addEventListener("click", () => {
   const open = nav.classList.toggle("open");
   toggle.setAttribute("aria-expanded", open);
 });
+document.addEventListener("click", (e) => {
+  const a = e.target.closest(".lang-switch a[data-lang]");
+  if (a) try { localStorage.setItem("ds-lang", a.dataset.lang); } catch (_) { /* storage blocked */ }
+});
 
 /* ---------- Forms ---------- */
 // A hidden field people never see or fill in. Spam bots do, and the backend quietly drops those.
 document.querySelectorAll(".js-form, .wall-form").forEach((f) => f.insertAdjacentHTML("beforeend",
-  '<div class="hp" aria-hidden="true"><label>Leave this empty <input name="ds_check" tabindex="-1" autocomplete="off"></label></div>'));
+  '<div class="hp" aria-hidden="true"><label>' + T.honeypot + ' <input name="ds_check" tabindex="-1" autocomplete="off"></label></div>'));
 
 // Sent as plain text so the browser posts straight to Google Apps Script (no CORS preflight).
 async function sendForm(data) {
@@ -221,8 +300,9 @@ document.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = Object.fromEntries(new FormData(form));
   data.list = form.dataset.list;
+  data.language = LANG === "fr" ? "Français" : "English";
   const ok = () => {
-    const msg = form.dataset.ok || "Thank you, dear someone.";
+    const msg = form.dataset.ok || T.thanks;
     const stage = form.closest(".pa-post-stage");
     if (stage) {
       const out = stage.querySelector(".pa-post-ok");
@@ -257,11 +337,11 @@ document.addEventListener("submit", async (e) => {
   // Long letters can be cut off by email apps: copy the full text, and keep the form filled in.
   let copied = false;
   try { await navigator.clipboard.writeText(body); copied = true; } catch (_) { /* clipboard unavailable */ }
-  location.href = mailto(copied ? "(Your full letter is copied. Paste it here.)" : "(Please paste your letter here.)");
+  location.href = mailto(copied ? T.pasteCopied : T.pasteManual);
   form.querySelectorAll(".form-ok").forEach((n) => n.remove());
   form.insertAdjacentHTML("beforeend", `<p class="form-ok" role="status">${copied
-    ? "Your letter is long, so we copied it for you. Paste it into the email that just opened."
-    : "Your letter is long. Please copy it into the email that just opened. Everything you wrote is still here."}</p>`);
+    ? T.longCopied
+    : T.longManual}</p>`);
 });
 
 /* ---------- Long letters: the writing space grows as you write ---------- */
@@ -280,16 +360,7 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
 /* ---------- Floating note ---------- */
-const NOTES = [
-  "you are allowed to begin again, as many times as it takes.",
-  "the version of you that survived deserves your gentleness.",
-  "rest is not a reward. It is part of the becoming.",
-  "you can be grateful and still grieve. Both are allowed.",
-  "what you call 'too much' may be exactly what someone needs.",
-  "grace was never meant to be earned. Receive it.",
-  "your story is not over just because this chapter is hard.",
-  "be as patient with yourself as God is with you.",
-];
+const NOTES = T.notes;
 const pop = document.querySelector(".note-pop");
 const noteBtn = document.querySelector(".float-note");
 const noteText = document.getElementById("note-text");
@@ -377,7 +448,7 @@ function postLetter(form, stage, email) {
   const g = document.createElement("div");
   g.className = "pa-env-ghost pa-envelope pa-airmail";
   g.setAttribute("aria-hidden", "true");
-  g.innerHTML = `${form.querySelector(".pa-env-stamp").outerHTML}${ENVELOPE_HEAD}<div class="pa-env-row"><span class="pa-lbl">From</span><span class="pa-typed">${esc(email || "")}</span></div><span class="pa-flap"><svg viewBox="0 0 100 50" preserveAspectRatio="none"><path d="M0 0H100L50 47Z" fill="#f3e4c8" stroke="rgba(78,63,44,.28)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>`;
+  g.innerHTML = `${form.querySelector(".pa-env-stamp").outerHTML}${ENVELOPE_HEAD}<div class="pa-env-row"><span class="pa-lbl">${T.to}</span><span class="pa-typed">${esc(email || "")}</span></div><span class="pa-flap"><svg viewBox="0 0 100 50" preserveAspectRatio="none"><path d="M0 0H100L50 47Z" fill="#f3e4c8" stroke="rgba(78,63,44,.28)" stroke-width="1" vector-effect="non-scaling-stroke"/></svg></span>`;
   g.style.left = form.offsetLeft + "px";
   g.style.top = form.offsetTop + "px";
   g.style.width = form.offsetWidth + "px";
@@ -424,7 +495,7 @@ function postLetter(form, stage, email) {
 const me = document.querySelector(".pa-me");
 if (me) me.insertAdjacentHTML("beforeend", paPostmark({ rot: -14, cls: "pa-me-pm" }));
 const psalm = document.querySelector(".pa-psalm");
-if (psalm) psalm.innerHTML = paPostmark({ top: "PSALM", bottom: "DEAR SOMEONE", c1: "46:5", c2: " ", rot: -9 });
+if (psalm) psalm.innerHTML = paPostmark({ top: T.psalm, bottom: "DEAR SOMEONE", c1: T.verse, c2: " ", rot: -9 });
 document.querySelectorAll(".pa-rs[data-room]").forEach((a, i) => {
   a.style.setProperty("--tilt", [-4, 3, -2, 5][i % 4] + "deg");
   a.insertAdjacentHTML("afterbegin", paStamp(a.dataset.room, { name: true, cls: "pa-rs-stamp" }));

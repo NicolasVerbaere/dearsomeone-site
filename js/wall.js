@@ -1,4 +1,5 @@
-/* The Wall: storage and handwriting helpers for wall.html.
+  const fr = typeof LANG !== "undefined" && LANG === "fr";
+  const signed = (item) => "— " + (item.name || (fr ? "Quelqu’un" : "Someone"));/* The Wall: storage and handwriting helpers for wall.html.
    Stories and replies are sent to the Google Sheet backend (CONFIG.formEndpoint in js/site.js,
    see backend/apps-script.gs). Nothing goes up until Marlène ticks "Approved". Meanwhile, your own
    notes are kept in this browser (localStorage) so you can see them, marked as waiting.
@@ -117,9 +118,10 @@ const Wall = (() => {
   const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const hash = (s) => [...String(s)].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
   const pen = (item) => (Number.isInteger(item.pen) && item.pen >= 0 && item.pen < 3 ? item.pen : hash(item.id) % 3);
-  const signed = (item) => "— " + (item.name || "Someone");
-  const dear = (item) => (item.to ? `Dear someone who ${item.to.replace(/^who\s+/i, "").replace(/[\s,.;:]+$/, "")},` : "Dear someone,");
-  const when = (ts) => (ts ? new Date(ts).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) : "");
+  const fr = typeof LANG !== "undefined" && LANG === "fr";
+  const signed = (item) => "— " + (item.name || (fr ? "Quelqu’un" : "Someone"));
+  const dear = (item) => (item.to ? `Dear someone who ${item.to.replace(/^who\s+/i, "").replace(/[\s,.;:]+$/, "")},` : (fr ? "Cher quelqu’un," : "Dear someone,"));
+  const when = (ts) => (ts ? new Date(ts).toLocaleDateString(fr ? "fr-FR" : "en-GB", { day: "numeric", month: "short" }) : "");
   const preview = (text, max) => {
     if (text.length <= max) return text;
     const cut = text.lastIndexOf(" ", max);

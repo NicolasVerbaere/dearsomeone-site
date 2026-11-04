@@ -116,8 +116,20 @@ section { padding: clamp(4rem, 9vw, 7.5rem) 0; position: relative; }
 .nav a[aria-current="page"] { color: var(--terracotta); }
 .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: .5rem; }
 .nav-toggle span { display: block; width: 26px; height: 2px; background: var(--brown); margin: 6px 0; transition: .3s; }
+.nav { margin-left: auto; }
+.lang-switch {
+  display: flex; align-items: center; margin-left: 1.6rem; padding-left: 1.2rem;
+  border-left: 1px solid rgba(78, 63, 44, .22);
+  font-family: var(--sans); font-size: .72rem; letter-spacing: .18em;
+}
+.lang-switch > * + * { margin-left: .2rem; }
+.lang-switch > * + *::before { content: "/"; display: inline-block; margin-right: .35rem; color: rgba(78, 63, 44, .35); }
+.lang-switch span { color: var(--terracotta); }
+.lang-switch a { color: var(--brown); text-decoration: none; padding: .5rem 0; }
+.lang-switch a:hover, .lang-switch a:focus-visible { color: var(--terracotta); text-decoration: underline; text-underline-offset: 4px; }
 
 @media (max-width: 880px) {
+  .lang-switch { margin-left: auto; margin-right: .6rem; padding-left: 0; border-left: 0; }
   .nav-toggle { display: block; }
   .nav {
     position: fixed; inset: 72px 0 auto 0; flex-direction: column; gap: 0;

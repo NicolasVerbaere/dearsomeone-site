@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Dear Someone</title>
+  <meta name="description" content="Écris à Marlène Mutwa et à Dear Someone&nbsp;: lettres, collaborations, presse et prises de parole.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="https://dearsomeone.one/connect.html">
+  <link rel="alternate" hreflang="fr" href="https://dearsomeone.one/fr/connect.html">
+  <link rel="alternate" hreflang="x-default" href="https://dearsomeone.one/connect.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Homemade+Apple&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/site.js" defer></script>
+</head>
+<body>
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h1>Réponds-moi, <em>cher quelqu’un</em>.</h1>
+        <p class="lead">Un mot, une histoire, une prière, ou simplement bonjour. Je lis chaque lettre, même quand je ne peux pas répondre à toutes.</p>
+        <p><strong>Presse &amp; collaborations&nbsp;:</strong> choisis «&nbsp;Presse / collaboration&nbsp;» ci-dessous, ou consulte la <a href="press.html">page presse</a>.</p>
+        <p class="rules" style="margin-top:1.6rem"><a href="https://www.instagram.com/juuust_angel/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@juuust_angel?lang=fr" target="_blank" rel="noopener">TikTok</a> · <a href="https://substack.com/@mixedbutnotconfused" target="_blank" rel="noopener">Substack</a></p>
+      </div>
+      <div class="letter reveal">
+        <form class="js-form" data-list="contact" data-ok="Ta lettre est en route. Merci de m’avoir écrit.">
+          <span class="script" style="font-size:1.4rem">Chère Marlène,</span>
+          <div class="form-grid">
+            <div><label for="c-name">Je m’appelle</label><input class="input" id="c-name" name="name" required autocomplete="name"></div>
+            <div><label for="c-email">Réponds-moi à</label><input class="input" id="c-email" name="email" type="email" required autocomplete="email"></div>
+            <div class="full"><label for="c-subject">Je t’écris au sujet de</label>
+              <select id="c-subject" name="subject">
+                <option value="Just saying hello">Juste pour dire bonjour</option>
+                <option value="The card game">Le jeu de cartes</option>
+                <option value="The book">Le livre</option>
+                <option value="The podcast">Le podcast</option>
+                <option value="Press / collaboration">Presse / collaboration</option>
+                <option value="Speaking">Une prise de parole</option>
+              </select></div>
+            <div class="full"><label for="c-msg">Ma lettre</label><textarea id="c-msg" name="message" required></textarea></div>
+          </div>
+          <p style="margin-top:1.2rem"><button class="btn" type="submit">Envoyer ma lettre</button></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div data-signup data-list="connect"></div>
+</main>
+</body>
+</html>
