@@ -180,8 +180,9 @@ const PA_ROOMS = {
   write: { num: "IV", name: T.writing },
 };
 const svg100 = (inner) => `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${inner}</svg>`;
+const BOOK_COVER = `<img class="pa-cover" src="${LANG === "fr" ? "../" : ""}assets/img/book-cover-sm.jpg" alt="" width="360" height="508">`;
 const MOTIF = {
-  book: svg100('<path d="M50 30C40 23 26 22 14 26V74C26 70 40 71 50 78C60 71 74 70 86 74V26C74 22 60 23 50 30Z"/><path d="M50 30V78"/><path d="M22 37C29 35 37 35.5 43 38.5M22 46C29 44 37 44.5 43 47.5M22 55C29 53 37 53.5 43 56.5M57 38.5C63 35.5 71 35 78 37M57 47.5C63 44.5 71 44 78 46M57 56.5C63 53.5 71 53 78 55" stroke-width="2"/><path d="M66 73V88L70.5 84L75 88V71.5" fill="currentColor" stroke="none"/>'),
+  book: BOOK_COVER,
   game: svg100('<rect x="33" y="22" width="34" height="50" rx="4" transform="rotate(-18 50 80)"/><rect x="33" y="22" width="34" height="50" rx="4" transform="rotate(18 50 80)"/><rect class="pa-occ" x="33" y="20" width="34" height="50" rx="4"/><path d="M53 33A9 9 0 0 0 53 51A12 12 0 0 1 53 33Z" fill="currentColor" stroke="none"/><circle cx="41" cy="60" r="1.7" fill="currentColor" stroke="none"/><circle cx="59" cy="62" r="1.7" fill="currentColor" stroke="none"/>'),
   pod: svg100('<circle cx="50" cy="50" r="18"/><path d="M50 32A18 18 0 0 0 50 68Z" fill="currentColor" stroke="none"/><path d="M26 38Q19 50 26 62M17 31Q6 50 17 69M74 38Q81 50 74 62M83 31Q94 50 83 69"/>'),
   write: svg100('<g transform="translate(62 40) rotate(35)"><path d="M0 30L-11 4C-13 -6 -9 -16 -9 -24H9C9 -16 13 -6 11 4Z"/><path d="M0 30V6"/><circle cx="0" cy="2" r="3.2"/></g><path d="M45 65C38 72 30 74 26 70C22 66 28 60 32 66C36 72 30 80 20 82" stroke-width="2.4"/>'),

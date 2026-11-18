@@ -441,12 +441,10 @@ label { font-family: var(--sans); font-size: .72rem; letter-spacing: .2em; text-
 .deck .stack { border: 1px solid rgba(212, 160, 85, .55); background: #5c4a33; }
 .play-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 6px; border-radius: 18px; }
 
-/* ---------- Book cover mock ---------- */
-.book-cover { width: min(100%, 300px); aspect-ratio: 2/3; background: var(--brown); border-radius: 4px 14px 14px 4px; box-shadow: var(--shadow), inset 10px 0 0 rgba(0,0,0,.18); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; color: var(--gold); text-align: center; padding: 2rem; transform: rotate(3deg); position: relative; }
-.book-cover .bc-stamp { position: absolute; top: 1.2rem; right: 1.2rem; width: 46px; height: 52px; border: 2px dashed var(--sand); display: grid; place-items: center; font-size: 1.3rem; color: var(--sand); }
-.book-cover .bc-dear { font-family: var(--script); font-size: 1.6rem; }
-.book-cover .bc-sub { font-family: var(--serif); font-style: italic; color: var(--cream); font-size: 1.15rem; }
-.book-cover .bc-by { margin-top: 1.6rem; font-family: var(--sans); font-size: .7rem; letter-spacing: .35em; text-transform: uppercase; color: var(--sand); }
+/* ---------- Book cover ---------- */
+.book-cover { display: block; width: min(100%, 330px); height: auto; border-radius: 3px 8px 8px 3px; box-shadow: var(--shadow), 0 2px 0 rgba(0,0,0,.08); transform: rotate(2.5deg); }
+.press-book { display: flex; align-items: center; gap: 1rem; }
+.press-book img { display: block; width: 64px; height: auto; border-radius: 1px 3px 3px 1px; box-shadow: 0 4px 10px rgba(0, 0, 0, .35); transform: rotate(-3deg); }
 .peek-note { margin-top: 1rem; font-family: var(--sans); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sand); text-align: center; }
 .peek-note a { color: var(--gold); }
 
@@ -718,6 +716,8 @@ html:has(.wall-dialog[open]) { overflow: hidden; }
 .pa-stamp-den { justify-self: start; font: 600 1.2rem/1 var(--serif); letter-spacing: .04em; }
 .pa-stamp-motif { display: block; width: 74%; align-self: center; }
 .pa-stamp-motif svg { display: block; width: 100%; height: auto; overflow: visible; }
+.pa-stamp-motif:has(.pa-cover) { width: 46%; }
+.pa-cover { display: block; width: 100%; height: auto; border-radius: 1px 3px 3px 1px; box-shadow: 0 3px 8px rgba(0, 0, 0, .35); transform: rotate(-3deg); }
 .pa-stamp-name { margin: 0; font: italic 500 1.5rem/1.05 var(--serif); color: inherit; }
 .pa-occ { fill: var(--s-bg, var(--brown)); }
 .pa-pstamp { position: relative; display: block; filter: drop-shadow(0 10px 12px rgba(47, 38, 26, .28)); }
